@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">LeBonCoin</string>
+    <string name="no_data_message">Aucun album à afficher !</string>
+</resources>
