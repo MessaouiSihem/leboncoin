@@ -17,9 +17,9 @@
         tools:listitem="@layout/album_item_layout"
         android:visibility="gone"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/error_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +28,17 @@
         android:textColor="@color/black"
         android:text="@string/no_data_message"
         android:textSize="@dimen/text_size"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:gravity="center"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:indeterminate="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,11 +12,14 @@ import com.leboncoin.data.entity.AlbumTable.ALBUM_TABLE_NAME
 abstract class AlbumDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract suspend fun addAlbum(albumEntity: AlbumEntity): Long
+    abstract suspend fun insertAlbums(albums: List<AlbumEntity>): List<Long>
 
-    @Query("DELETE FROM $ALBUM_TABLE_NAME WHERE ${AlbumColumnNames.ALBUM_ID} =:id")
-    abstract suspend fun deleteAlbum(id: Int): Int
+    @Query("DELETE FROM $ALBUM_TABLE_NAME")
+    abstract suspend fun deleteAlbums(): Int
 
     @Query("SELECT * from $ALBUM_TABLE_NAME")
     abstract suspend fun getAllAlbums(): List<AlbumEntity>
+
+    @Query("SELECT COUNT(${AlbumColumnNames.ALBUM_ID}) FROM $ALBUM_TABLE_NAME")
+    abstract suspend fun getRowCount(): Int
 }

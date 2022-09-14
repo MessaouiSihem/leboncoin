@@ -6,7 +6,7 @@ import com.leboncoin.data.mapper.AlbumMapper
 import com.leboncoin.domain.models.Album
 import com.leboncoin.domain.repository.AlbumRepository
 
-internal class AlbumRemoteDataSourceImplImpl(
+internal class AlbumRemoteDataSourceImpl(
     private val apiServices: ApiServices,
     private val albumMapper: AlbumMapper,
 ) : AlbumRemoteDataSource {

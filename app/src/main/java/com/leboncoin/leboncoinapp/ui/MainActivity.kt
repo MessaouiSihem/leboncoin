@@ -42,20 +42,35 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeFetchAlbums(uiBindings: ActivityMainBinding) {
-        mainViewModel.albumsLiveData.observe(this,
-            Observer {
-                when (it) {
-                    is RequestResult.Success -> {
+        mainViewModel.albumsLiveData.observe(this
+        ) {
+            when (it) {
+                is RequestResult.Success -> {
+                    if (it.result.isEmpty()) {
+                        // Fetched list is empty
+                        hideDate(uiBindings)
+                    } else {
                         albumAdapter.submitList(it.result)
-                        uiBindings.albumRecyclerView.visibility = View.VISIBLE
-                        uiBindings.errorText.visibility = View.INVISIBLE
-                    }
-
-                    is RequestResult.Error -> {
-                        uiBindings.albumRecyclerView.visibility = View.INVISIBLE
-                        uiBindings.errorText.visibility = View.VISIBLE
+                        showData(uiBindings)
                     }
                 }
-            })
+
+                is RequestResult.Error -> {
+                    hideDate(uiBindings)
+                }
+            }
+        }
+    }
+
+    private fun showData(uiBindings: ActivityMainBinding) {
+        uiBindings.albumRecyclerView.visibility = View.VISIBLE
+        uiBindings.errorText.visibility = View.INVISIBLE
+        uiBindings.progressIndicator.visibility = View.INVISIBLE
+    }
+
+    private fun hideDate(uiBindings: ActivityMainBinding) {
+        uiBindings.albumRecyclerView.visibility = View.INVISIBLE
+        uiBindings.errorText.visibility = View.VISIBLE
+        uiBindings.progressIndicator.visibility = View.INVISIBLE
     }
 }

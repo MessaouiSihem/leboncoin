@@ -2,7 +2,6 @@ package com.leboncoin.leboncoinapp.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -32,7 +31,6 @@ class AlbumAdapter : ListAdapter<Album, AlbumAdapter.ItemViewHolder>(DiffCallbac
         RecyclerView.ViewHolder(itemLayoutBinding.root) {
         fun bind(album: Album) {
             itemLayoutBinding.albumTitle.text = album.title
-            itemLayoutBinding.albumImage.scaleType = ImageView.ScaleType.FIT_XY
             itemLayoutBinding.albumImage.loadImage(album.thumbnailUrl)
 
         }

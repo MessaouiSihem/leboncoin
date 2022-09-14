@@ -19,7 +19,7 @@ abstract class LeBonCoinDataBase: RoomDatabase() {
     companion object {
 
         var TEST_MODE = false
-        private const val DATABASE_NAME = "le_bon_coin_database.db"
+        const val DATABASE_NAME = "le_bon_coin_database.db"
 
         @Volatile
         private var INSTANCE: LeBonCoinDataBase? = null

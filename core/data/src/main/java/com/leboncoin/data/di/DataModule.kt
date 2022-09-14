@@ -46,14 +46,14 @@ fun createDataModule() = module {
     }
 
     factory {
-        AlbumRemoteDataSourceImplImpl(
+        AlbumRemoteDataSourceImpl(
             get(),
             get()
         ) as AlbumRemoteDataSource
     }
 
     factory {
-        AlbumLocalDataSourceImplImpl(
+        AlbumLocalDataSourceImpl(
             get(),
             get()
         ) as AlbumLocalDataSource
